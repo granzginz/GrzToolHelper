@@ -1,0 +1,12 @@
+D:\Camp Latihan Pemrograman\C#\GrzToolHelper\GrzToolHelper\bin\Debug\GrzToolHelper.dll
+D:\Camp Latihan Pemrograman\C#\GrzToolHelper\GrzToolHelper\bin\Debug\GrzToolHelper.pdb
+D:\Camp Latihan Pemrograman\C#\GrzToolHelper\GrzToolHelper\obj\Debug\GrzToolHelper.csproj.CoreCompileInputs.cache
+D:\Camp Latihan Pemrograman\C#\GrzToolHelper\GrzToolHelper\obj\Debug\GrzToolHelper.dll
+D:\Camp Latihan Pemrograman\C#\GrzToolHelper\GrzToolHelper\obj\Debug\GrzToolHelper.pdb
+D:\Camp Latihan Pemrograman\C#\GrzToolHelper\GrzToolHelper\bin\Debug\PgpSharp.dll
+D:\Camp Latihan Pemrograman\C#\GrzToolHelper\GrzToolHelper\bin\Debug\PgpSharp.pdb
+D:\Camp Latihan Pemrograman\C#\GrzToolHelper\GrzToolHelper\bin\Debug\PgpSharp.xml
+D:\Camp Latihan Pemrograman\C#\GrzToolHelper\GrzToolHelper\obj\Debug\GrzToolHelper.csproj.CopyComplete
+D:\Camp Latihan Pemrograman\C#\GrzToolHelper\GrzToolHelper\bin\Debug\BouncyCastle.OpenPgp.dll
+D:\Camp Latihan Pemrograman\C#\GrzToolHelper\GrzToolHelper\bin\Debug\BouncyCastle.OpenPgp.xml
+D:\Camp Latihan Pemrograman\C#\GrzToolHelper\GrzToolHelper\obj\Debug\GrzToolHelper.csprojAssemblyReference.cache
