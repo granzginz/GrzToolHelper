@@ -1,0 +1,440 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PgpSharp</name>
+    </assembly>
+    <members>
+        <member name="T:PgpSharp.DataInput">
+            <summary>
+            Base input object for data processing.
+            </summary>
+        </member>
+        <member name="P:PgpSharp.DataInput.Operation">
+            <summary>
+            Gets or sets the operation.
+            </summary>
+            <value>
+            The operation.
+            </value>
+        </member>
+        <member name="P:PgpSharp.DataInput.Originator">
+            <summary>
+            Gets or sets the originator. Required to sign.
+            </summary>
+            <value>
+            The originator.
+            </value>
+        </member>
+        <member name="P:PgpSharp.DataInput.Recipient">
+            <summary>
+            Gets or sets the recipient. Required to encrypt.
+            </summary>
+            <value>
+            The recipient.
+            </value>
+        </member>
+        <member name="P:PgpSharp.DataInput.Armor">
+            <summary>
+            Gets or sets a value indicating whether the output should be ASCII armored.
+            </summary>
+            <value>
+              <c>true</c> to armorize; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:PgpSharp.DataInput.AlwaysTrustPublicKey">
+            <summary>
+            Gets or sets a value indicating the public key should always be trusted.
+            </summary>
+            <value>
+              <c>true</c> to always trust the public key; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:PgpSharp.DataInput.Passphrase">
+            <summary>
+            Gets or sets the passphrase for the operation. Required to sign and decrypt.
+            </summary>
+            <value>
+            The passphrase.
+            </value>
+        </member>
+        <member name="P:PgpSharp.DataInput.NeedsPassphrase">
+            <summary>
+            Gets a value indicating whether a passphrase is required for the specified <see cref="P:PgpSharp.DataInput.Operation"/>.
+            </summary>
+            <value>
+              <c>true</c> if passphrase is needed; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="M:PgpSharp.DataInput.Verify">
+            <summary>
+            Verifies this input for requirements.
+            </summary>
+            <exception cref="T:PgpSharp.PgpException"></exception>
+        </member>
+        <member name="T:PgpSharp.StreamDataInput">
+            <summary>
+            Input object for processing a stream.
+            </summary>
+        </member>
+        <member name="P:PgpSharp.StreamDataInput.InputData">
+            <summary>
+            Gets or sets the input data stream.
+            </summary>
+            <value>
+            The input data.
+            </value>
+        </member>
+        <member name="M:PgpSharp.StreamDataInput.Verify">
+            <summary>
+            Verifies this input for requirements.
+            </summary>
+            <exception cref="T:PgpSharp.PgpException">Input data is required.</exception>
+        </member>
+        <member name="T:PgpSharp.FileDataInput">
+            <summary>
+            Input object for processing a file.
+            </summary>
+        </member>
+        <member name="P:PgpSharp.FileDataInput.InputFile">
+            <summary>
+            Gets or sets the input file path.
+            </summary>
+            <value>
+            The input file.
+            </value>
+        </member>
+        <member name="P:PgpSharp.FileDataInput.OutputFile">
+            <summary>
+            Gets or sets the output file path.
+            </summary>
+            <value>
+            The output file.
+            </value>
+        </member>
+        <member name="M:PgpSharp.FileDataInput.Verify">
+            <summary>
+            Verifies this input for requirements.
+            </summary>
+            <exception cref="T:PgpSharp.PgpException">
+            Input file is required.
+            or
+            Output file is required.
+            </exception>
+        </member>
+        <member name="T:PgpSharp.DataOperation">
+            <summary>
+            Defines the supported data operations.
+            </summary>
+        </member>
+        <member name="F:PgpSharp.DataOperation.Sign">
+            <summary>
+            Signs the data.
+            </summary>
+        </member>
+        <member name="F:PgpSharp.DataOperation.ClearSign">
+            <summary>
+            Signs the data with clear text signature.
+            </summary>
+        </member>
+        <member name="F:PgpSharp.DataOperation.Encrypt">
+            <summary>
+            Encrypts the data.
+            </summary>
+        </member>
+        <member name="F:PgpSharp.DataOperation.Decrypt">
+            <summary>
+            Decrypt the data.
+            </summary>
+        </member>
+        <member name="F:PgpSharp.DataOperation.SignAndEncrypt">
+            <summary>
+            Sign and encrypt the data.
+            </summary>
+        </member>
+        <member name="T:PgpSharp.GnuPG.GnuPGConfig">
+            <summary>
+            Contains configuration values for using GnuPG.
+            </summary>
+        </member>
+        <member name="F:PgpSharp.GnuPG.GnuPGConfig.GnuPGExePathKey">
+            <summary>
+            The GPG executable path key for appSettings.
+            </summary>
+        </member>
+        <member name="P:PgpSharp.GnuPG.GnuPGConfig.GnuPGExePath">
+            <summary>
+            Gets or sets the GPG executable path.
+            </summary>
+            <value>
+            The GPG executable path.
+            </value>
+        </member>
+        <member name="T:PgpSharp.GnuPG.GnuPGTool">
+            <summary>
+            Implements <see cref="T:PgpSharp.IPgpTool"/> as a gnupg cli wrapper.
+            </summary>
+        </member>
+        <member name="P:PgpSharp.GnuPG.GnuPGTool.KeyringFolder">
+            <summary>
+            Gets or sets a different keyring folder than default.
+            </summary>
+            <value>
+            The keyring folder.
+            </value>
+        </member>
+        <member name="M:PgpSharp.GnuPG.GnuPGTool.ProcessData(PgpSharp.StreamDataInput)">
+            <summary>
+            Processes data with stream input.
+            </summary>
+            <param name="input">The input.</param>
+            <returns>
+            Output stream.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">input</exception>
+            <exception cref="T:PgpSharp.PgpException"></exception>
+        </member>
+        <member name="M:PgpSharp.GnuPG.GnuPGTool.ProcessData(PgpSharp.FileDataInput)">
+            <summary>
+            Processes data with file input.
+            </summary>
+            <param name="input">The input.</param>
+            <exception cref="T:System.ArgumentNullException">input</exception>
+            <exception cref="T:PgpSharp.PgpException"></exception>
+        </member>
+        <member name="M:PgpSharp.GnuPG.GnuPGTool.ListKeys(PgpSharp.KeyTarget)">
+            <summary>
+            Lists the known keys.
+            </summary>
+            <param name="target">The target.</param>
+            <returns></returns>
+        </member>
+        <member name="M:PgpSharp.GnuPG.GnuPGTool.ParseKeyCapField(System.String,PgpSharp.KeyCapabilities@,PgpSharp.KeyCapabilities@)">
+            <summary>
+            Parses the key capability field from list keys command.
+            </summary>
+            <param name="field">The field.</param>
+            <param name="allowed">The allowed.</param>
+            <param name="usable">The usable.</param>
+        </member>
+        <member name="T:PgpSharp.GnuPG.RedirectedProcess">
+            <summary>
+            Wraps a process with redirected input/outputs.
+            </summary>
+        </member>
+        <member name="M:PgpSharp.IO.IOUtility.WriteSecret(System.IO.TextWriter,System.Security.SecureString)">
+            <summary>
+            Writes the <see cref="T:System.Security.SecureString"/> char-by-char to the specified input.
+            </summary>
+            <param name="input">The input.</param>
+            <param name="secret">The secret.</param>
+        </member>
+        <member name="M:PgpSharp.IO.IOUtility.DeleteFiles(System.String[])">
+            <summary>
+            Deletes the specified files.
+            </summary>
+            <param name="files"></param>
+        </member>
+        <member name="M:PgpSharp.IO.IOUtility.DecodeAsciiEscapes(System.String)">
+            <summary>
+            Decodes the strings containing ASCII escapes like \x3a into : (colon).
+            </summary>
+            <param name="input">The input.</param>
+            <returns></returns>
+        </member>
+        <member name="T:PgpSharp.IO.TempFileStream">
+            <summary>
+            A read-only file stream that will delete the underlying file when disposed.
+            </summary>
+        </member>
+        <member name="T:PgpSharp.IPgpTool">
+            <summary>
+            Main interface for pgp tool.
+            </summary>
+        </member>
+        <member name="P:PgpSharp.IPgpTool.KeyringFolder">
+            <summary>
+            Gets or sets a different keyring folder than default.
+            </summary>
+            <value>
+            The keyring folder.
+            </value>
+        </member>
+        <member name="M:PgpSharp.IPgpTool.ProcessData(PgpSharp.StreamDataInput)">
+            <summary>
+            Processes data with stream input.
+            </summary>
+            <param name="input">The input.</param>
+            <returns>Output stream.</returns>
+        </member>
+        <member name="M:PgpSharp.IPgpTool.ProcessData(PgpSharp.FileDataInput)">
+            <summary>
+            Processes data with file input.
+            </summary>
+            <param name="input">The input.</param>
+        </member>
+        <member name="M:PgpSharp.IPgpTool.ListKeys(PgpSharp.KeyTarget)">
+            <summary>
+            Lists the known keys.
+            </summary>
+            <param name="target">The target.</param>
+            <returns></returns>
+        </member>
+        <member name="T:PgpSharp.KeyCapabilities">
+            <summary>
+            Indicates what the key can do.
+            </summary>
+        </member>
+        <member name="F:PgpSharp.KeyCapabilities.None">
+            <summary>
+            Not applicable to current key.
+            </summary>
+        </member>
+        <member name="F:PgpSharp.KeyCapabilities.Encrypt">
+            <summary>
+            Key can encrypt.
+            </summary>
+        </member>
+        <member name="F:PgpSharp.KeyCapabilities.Sign">
+            <summary>
+            Key can sign.
+            </summary>
+        </member>
+        <member name="F:PgpSharp.KeyCapabilities.Certify">
+            <summary>
+            Key can certify
+            </summary>
+        </member>
+        <member name="F:PgpSharp.KeyCapabilities.Authentication">
+            <summary>
+            Key can perform authentication
+            </summary>
+        </member>
+        <member name="F:PgpSharp.KeyCapabilities.Unknown">
+            <summary>
+            Unknown capability
+            </summary>
+        </member>
+        <member name="F:PgpSharp.KeyCapabilities.Disabled">
+            <summary>
+            Key is disabled.
+            </summary>
+        </member>
+        <member name="T:PgpSharp.KeyId">
+            <summary>
+            Simple id for a key.
+            </summary>
+        </member>
+        <member name="M:PgpSharp.KeyId.#ctor(System.String,System.String,PgpSharp.KeyCapabilities,PgpSharp.KeyCapabilities,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Initializes a new instance of the <see cref="T:PgpSharp.KeyId" /> class.
+            </summary>
+            <param name="keyId">The key id.</param>
+            <param name="fingerprint">The finger print.</param>
+            <param name="allowedCapability">The allowed capability.</param>
+            <param name="usableCapability">The usable capability.</param>
+            <param name="userIds">The user ids.</param>
+        </member>
+        <member name="P:PgpSharp.KeyId.Id">
+            <summary>
+            Gets the key id.
+            </summary>
+            <value>
+            The key id.
+            </value>
+        </member>
+        <member name="P:PgpSharp.KeyId.UserIds">
+            <summary>
+            Gets the associated user ids.
+            </summary>
+            <value>
+            The user ids.
+            </value>
+        </member>
+        <member name="P:PgpSharp.KeyId.Fingerprint">
+            <summary>
+            Gets the fingerprint.
+            </summary>
+            <value>
+            The fingerprint.
+            </value>
+        </member>
+        <member name="P:PgpSharp.KeyId.AllowedCapability">
+            <summary>
+            Gets the allowed capability for the key.
+            </summary>
+            <value>
+            The capability.
+            </value>
+        </member>
+        <member name="P:PgpSharp.KeyId.UsableCapability">
+            <summary>
+            Gets the usable capability for the key.
+            </summary>
+            <value>
+            The capability.
+            </value>
+        </member>
+        <member name="M:PgpSharp.KeyId.op_Implicit(PgpSharp.KeyId)~System.String">
+            <summary>
+            Performs an implicit conversion from <see cref="T:PgpSharp.KeyId"/> to <see cref="T:System.String"/>.
+            </summary>
+            <param name="keyId">The identifier.</param>
+            <returns>
+            The result of the conversion.
+            </returns>
+        </member>
+        <member name="M:PgpSharp.KeyId.ToString">
+            <summary>
+            Returns a <see cref="T:System.String" /> that represents this instance.
+            </summary>
+            <returns>
+            A <see cref="T:System.String" /> that represents this instance.
+            </returns>
+        </member>
+        <member name="T:PgpSharp.KeyTarget">
+            <summary>
+            Indicates the key listing target.
+            </summary>
+        </member>
+        <member name="F:PgpSharp.KeyTarget.Public">
+            <summary>
+            The public keys.
+            </summary>
+        </member>
+        <member name="F:PgpSharp.KeyTarget.Secret">
+            <summary>
+            The private keys.
+            </summary>
+        </member>
+        <member name="T:PgpSharp.PgpException">
+            <summary>
+            Base exception class for pgp.
+            </summary>
+        </member>
+        <member name="M:PgpSharp.PgpException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:PgpSharp.PgpException"/> class.
+            </summary>
+        </member>
+        <member name="M:PgpSharp.PgpException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:PgpSharp.PgpException"/> class.
+            </summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="M:PgpSharp.PgpException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:PgpSharp.PgpException"/> class.
+            </summary>
+            <param name="message">The error message that explains the reason for the exception.</param>
+            <param name="innerException">The exception that is the cause of the current exception, or a null reference (Nothing in Visual Basic) if no inner exception is specified.</param>
+        </member>
+        <member name="M:PgpSharp.PgpException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:PgpSharp.PgpException"/> class.
+            </summary>
+            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo" /> that holds the serialized object data about the exception being thrown.</param>
+            <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext" /> that contains contextual information about the source or destination.</param>
+        </member>
+    </members>
+</doc>
